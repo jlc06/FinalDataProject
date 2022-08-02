@@ -14,5 +14,8 @@
 - Circle - Emery Hollar
 - X - Barry Bingham and Brian Ernest
 
+## Visualization
+We will be using Tableau to visualize the story our data tells. So far we have a table showing the relationship between the predicted stats and the actual stats and a graph showing the difference in predicted vs. actual stats broken down by position. We will be adding a final graph showing what the model predicts for next year based on last year's stats.
+
 We hope to use our class time efficiently to accomplish a lot of our team-oriented work given our conflicting schedules, but we stay in constant contact via slack
 
