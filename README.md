@@ -14,5 +14,5 @@
 - Circle - Emery Hollar
 - X - Barry Bingham and Brian Ernest
 
-We hope to use our class time efficiently to accomplish a lot of our team-oriented work given our conflicting schedules, but we stay in constant contact via slack.
+We hope to use our class time efficiently to accomplish a lot of our team-oriented work given our conflicting schedules, but we stay in constant contact via slack
 
