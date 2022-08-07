@@ -189,6 +189,29 @@ CREATE TABLE advRec (
 	PRIMARY KEY (PlID, TmID)
 );
 
+CREATE TABLE passerratings (
+	Player VARCHAR(17) NOT NULL,
+	Team VARCHAR(3) NOT NULL,
+	Cmp INT NOT NULL,
+	Att INT NOT NULL,
+	Yds INT NOT NULL,
+	TD INT NOT NULL,
+	"Int" INT NOT NULL,
+	AvgRate FLOAT(4) NOT NULL,
+	PassRate FLOAT(2) NOT NULL,
+	"Year" INT NOT NULL,
+	PlID VARCHAR(21) NOT NULL,
+	PRIMARY KEY (PlID)
+);
+
+CREATE TABLE starters (
+	Starter VARCHAR(17) NOT NULL,
+	Tm VARCHAR(3) NOT NULL,
+	"Year" INT NOT NULL,
+	PlID VARCHAR(21) NOT NULL,
+	TmID VARCHAR(7) NOT NULL,
+	PRIMARY KEY (PlID, TMID)
+);
 
 SELECT * 
 FROM teams;
@@ -204,3 +227,9 @@ FROM advrush;
 
 SELECT *
 FROM advrec;
+
+SELECT *
+FROM passerratings;
+
+SELECT *
+FROM starters;
