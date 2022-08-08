@@ -66,7 +66,7 @@ We decided to use a decade worth of statistics and we split our model to train o
 We decided on a Linear Regression model given the continuous data inputs and outputs we were expecting. The limitation of this is not being able to use a more robust model like a neural network, which could find a greater number of connections within the data. However, given the non binary nature of the outputs we were expecting (points per game), a linear regression model made more sense. We did not change our model choice through the course of the project.
 
 ### Model Attempts with Accuracy by Attempts
-1st Attempt
+### 1st Attempt
  - QBs:
     - Accuracy: 45%
     - Average Error: 0.8 PPG
@@ -91,7 +91,8 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Average Error: 2.0 PPG
     - Median Error: 0.8 PPG
     - Absolute Median Error: 1.5 PPG
-2nd Attempt
+
+### 2nd Attempt
  - QBs:
     - Accuracy: 69%
     - Average Error: 0.1 PPG
@@ -116,7 +117,8 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Average Error: 2.0 PPG
     - Median Error: 0.8 PPG
     - Absolute Median Error: 1.5 PPG
- 3rd Attempt
+
+### 3rd Attempt
  - QBs:
     - Accuracy: 69%
     - Average Error: 0.1 PPG
@@ -141,7 +143,8 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Average Error: 2.0 PPG
     - Median Error: 0.8 PPG
     - Absolute Median Error: 1.5 PPG
- 4th Attempt
+
+### 4th Attempt
  - QBs:
     - Accuracy: 69%
     - Average Error: 0.1 PPG
@@ -166,7 +169,8 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Average Error: 1.9 PPG
     - Median Error: 0.5 PPG
     - Absolute Median Error: 1.6 PPG
- 5th Attempt
+
+### 5th Attempt
  - QBs:
     - Accuracy: 70%
     - Average Error: 0.2 PPG
@@ -191,7 +195,8 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Average Error: 1.8 PPG
     - Median Error: 0.5 PPG
     - Absolute Median Error: 1.6 PPG
- Final Attempt:
+
+### Final Attempt:
  - QBs:
     - Accuracy: 70%
     - Average Error: 0.2 PPG
