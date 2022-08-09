@@ -14,7 +14,7 @@ All of our data is provided through web scapes of Pro-Football-Reference, a webs
 - Can a future season be predicted using a previous seasons statistics?
 - What will the final fantasy football rankings be for the 2022 season?
 
-### Tools Used
+### Tools and Technologies Used
 - We used Python, Pandas, Splinter, BeautfiulSoup, and ChromeDriver to scrap our data and prepare our datasets
 - We used pgAdmin, Postgres, and the SQL language to create tables to be fed our datasets, and in turn, feed into an AWS database
 - We used SKLearn and SQLAlchemy to create our models and feed in the data from our database directly into our model
@@ -23,7 +23,7 @@ All of our data is provided through web scapes of Pro-Football-Reference, a webs
 
 ## Outline of Repository
 ### Database Folder
-Includes working code that scrapes the Pro-Football-Reference website, cleans the returned data in a functional pandas DataFrame, and creates a CSV file to be loaded into pgAdmin. 
+Includes working code that scrapes the Pro-Football-Reference website, cleans the returned data in a functional pandas DataFrame, and creates a CSV file to be loaded into pgAdmin. It also includes our ERD of our relational database in SQL, as well as a SQL file that shows how are tables were created.
 ### Database_CSVs Folder
 Includes all data, in CSV format, that is currently in our AWS Database.
 ### Models Folder
@@ -288,10 +288,16 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Median Error: 0.5 PPG
     - Absolute Median Error: 1.8 PPG
 
+### Final Model Analysis
+
+
 ### Dashboard Storyboard
 We will begin with an explanation of how fantasy points are scored and the differences by position. We fill continue with a visualization showing predicted 2020 points per game plotted against the actual 2020 points per game. We will continue with a visualization showing the median error in our predictions, and finish with a interactive visualization that allows a user to filter by position and team on the projections for the 2022 season. 
 
-## Analysis
+## Future
+### Future Analysis
+
+### Hindsight - Changes We Would Make
 
 ## Presentation Link
 https://docs.google.com/presentation/d/1SOBrhKYMKPc8b_CmATLQwIhHAUzWvkfaMHBu6TIS9mM/edit?usp=sharing
