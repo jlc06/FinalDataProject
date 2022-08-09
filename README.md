@@ -57,7 +57,18 @@ In our initial data exploration, we wanted to ensure the base stats that make up
 Once we found a large amount of what we deemed relavant variables, we created scraping functions that could be repeated on certain areas of the Pro-Football-Reference website using years as an input. During our initial preprocessing phase, we cleaned up the dataset to remove unnecessary characters, renamed our columns, dropped null values, and standardized certain columns on a per game basis, considering we wanted our targeted output to be "fantasy points per game".
 
 ### Feature Engineering
-A couple of features we engineered in an effort to increase accuracy were target/rushing share and a binary "starter" and "next year starter" flag. 
+A couple of features we engineered in an effort to increase accuracy were target/rushing share and a binary "starter" and "next year starter" flag. We created the target and rushing shares metrics by dividing the target or rushing attempts columns by the team passing attempts and team rushing attempt columns, after joining the individual stats and team stats tables through a SQL query. 
+
+Photo
+
+We created the "starter" flag by first investigating the data to find a threshold to work with, ultimately deciding to designate a QB as a "starter" if they:
+- Started over 76% of games they played in
+- Started at least 5 games in the season
+
+Finally, we used that same flag to create the "next_yr_starter" column to help filter out QBs that couldn't score high PPG in the following season due to not being a starter. 
+
+### Data Decisions
+We needed 4 separate models for the 4 different football positions given the difference in weight of certain statistics on certain positions. For example, passing and rushing stats were more heavily weighted for QBs and RBs, while targets and receptions were more heavily weighted for WRs and TEs. With this in mind, we created a robust dataset that could then be sliced before being put into our models so we could gear each model to a specific position. 
 
 ### Training and Testing Data
 We decided to use a decade worth of statistics and we split our model to train on nine years of data (2012-2020) and test on two (2020-2021). We then predicted 2022 statistical outcomes based on the 2021 individaul statistics. 
@@ -65,27 +76,36 @@ We decided to use a decade worth of statistics and we split our model to train o
 ### Model Choice
 We decided on a Linear Regression model given the continuous data inputs and outputs we were expecting. The limitation of this is not being able to use a more robust model like a neural network, which could find a greater number of connections within the data. However, given the non binary nature of the outputs we were expecting (points per game), a linear regression model made more sense. We did not change our model choice through the course of the project.
 
+
+## Analysis
 ### Model Attempts with Accuracy by Attempts
 ### 1st Attempt
+
+![first](Images/firstattempt.png)
+
  - QBs:
+    - Attributes: Passing Attempts, Passing Yards, Passing Touchdowns, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Fantasy Points Per Game
     - Accuracy: 45%
     - Average Error: 0.8 PPG
     - Absolute Average Error: 4.0 PPG
     - Median Error: 0.4 PPG
     - Absolute Median Error: 3.0 PPG
  - RBs:
+    - Attributes: Age, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Rushing Yards Per Attempt, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game
     - Accuracy: 52%
     - Average Error: -0.1 PPG
     - Absolute Average Error: 2.7 PPG
     - Median Error: 0.3 PPG
     - Absolute Median Error: 2.2 PPG
  - WRs:
+    - Attributes: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game
     - Accuracy: 58%
     - Average Error: 0.4 PPG
     - Absolute Average Error: 2.6 PPG
     - Median Error: 0.7 PPG
     - Absolute Median Error: 2.1 PPG
  - TEs:
+    - Attributes: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game
     - Accuracy: 53%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 2.0 PPG
@@ -93,25 +113,33 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Median Error: 1.5 PPG
 
 ### 2nd Attempt
+
+![second](Images/secondattempt.png)
+
  - QBs:
+    - Attributes Kept: Passing Attempts, Passing Yards, Passing Touchdowns, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Fantasy Points Per Game
+    - Attributes Added: Starter designation, Next Year Starter designation
     - Accuracy: 69%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 3.0 PPG
     - Median Error: 0.2 PPG
     - Absolute Median Error: 2.9 PPG
  - RBs:
+    - Attributes: Same as previous attempt
     - Accuracy: 53%
     - Average Error: -0.1 PPG
     - Absolute Average Error: 2.7 PPG
     - Median Error: 0.2 PPG
     - Absolute Median Error: 1.9 PPG
  - WRs:
+    - Attributes: Same as previous attempt
     - Accuracy: 58%
     - Average Error: 0.3 PPG
     - Absolute Average Error: 2.7 PPG
     - Median Error: 0.7 PPG
     - Absolute Median Error: 2.1 PPG
  - TEs:
+    - Attributes: Same as previous attempt
     - Accuracy: 53%
     - Average Error: 0.2 PPG
     - Absolute Average Error: 2.0 PPG
@@ -119,25 +147,36 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Median Error: 1.5 PPG
 
 ### 3rd Attempt
+
+![third](Images/thirdattempt.png)
+
  - QBs:
+    - Attributes: Passing Attempts, Passing Yards, Passing Touchdowns, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Fantasy Points Per Game, Starter designation, Next Year Starter designation
+    - Attributes Added: Age
     - Accuracy: 69%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 3.0 PPG
     - Median Error: 0.2 PPG
     - Absolute Median Error: 2.9 PPG
  - RBs:
+    - Attributes Kept: Age, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Rushing Yards Per Attempt, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game
+    - Attributes Added: Rushing Share, Target Share
     - Accuracy: 54%
     - Average Error: -0.1 PPG
     - Absolute Average Error: 2.6 PPG
     - Median Error: 0.2 PPG
     - Absolute Median Error: 2.1 PPG
  - WRs:
+    - Attributes Kept: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game
+    - Attributes Added: Rushing Share, Target Share
     - Accuracy: 57%
     - Average Error: 0.4 PPG
     - Absolute Average Error: 2.7 PPG
     - Median Error: 0.7 PPG
     - Absolute Median Error: 2.1 PPG
  - TEs:
+    - Attributes Kept: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game
+    - Attributes Added: Rushing Share, Target Share
     - Accuracy: 53%
     - Average Error: 0.2 PPG
     - Absolute Average Error: 2.0 PPG
@@ -145,25 +184,35 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Median Error: 1.5 PPG
 
 ### 4th Attempt
+
+![fourth](Images/fourthattempt.png)
+
  - QBs:
+    - Attributes: Same as previous attempt
     - Accuracy: 69%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 3.0 PPG
     - Median Error: 0.2 PPG
     - Absolute Median Error: 2.9 PPG
  - RBs:
+    - Attributes Kept: Age, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Rushing Yards Per Attempt, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share
+    - Attributes Added: Yards Before Contact, Yards Before Contact Per Attempt, Yards After Contact, Yards After Contact Per Attempt, Broken Tackles, Broken Tackles Per Attempt
     - Accuracy: 63%
     - Average Error: -0.1 PPG
     - Absolute Average Error: 2.6 PPG
     - Median Error: 0.4 PPG
     - Absolute Median Error: 2.0 PPG
  - WRs:
+    - Attributes Kept: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share
+    - Attributes Added: Average Depth of Target, Yards Before Catch, Yards Before Catch Per Reception, Yards After Catch, Yards After Catch Per Reception, Passer Rating of QB
     - Accuracy: 62%
     - Average Error: 0.4 PPG
     - Absolute Average Error: 2.5 PPG
     - Median Error: 0.7 PPG
     - Absolute Median Error: 2.2 PPG
  - TEs:
+    - Attributes Kept: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share
+    - Attributes Added: Average Depth of Target, Yards Before Catch, Yards Before Catch Per Reception, Yards After Catch, Yards After Catch Per Reception, Passer Rating of QB
     - Accuracy: 67%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 1.9 PPG
@@ -171,25 +220,35 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Median Error: 1.6 PPG
 
 ### 5th Attempt
+
+![fifth](Images/fifthattempt.png)
+
  - QBs:
+    - Attributes: Same as previous attempt
     - Accuracy: 70%
     - Average Error: 0.2 PPG
     - Absolute Average Error: 2.9 PPG
     - Median Error: 0.4 PPG
     - Absolute Median Error: 2.5 PPG
  - RBs:
+    - Attributes Kept: Age, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Rushing Yards Per Attempt, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share, Yards Before Contact, Yards After Contact, Broken Tackles
+    - Attributes Removed: Yards Before Contact Per Attempt, Yards After Contact Per Attempt, Broken Tackles Per Attempt
     - Accuracy: 61%
     - Average Error: -0.2 PPG
     - Absolute Average Error: 2.7 PPG
     - Median Error: 0.03 PPG
     - Absolute Median Error: 2.1 PPG
  - WRs:
+    - Attributes Kept: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share, Average Depth of Target, Yards Before Catch, Yards After Catch, Passer Rating of QB
+    - Attributes Removed: Yards Before Catch Per Reception, Yards After Catch Per Reception
     - Accuracy: 63%
     - Average Error: 0.3 PPG
     - Absolute Average Error: 2.6 PPG
     - Median Error: 0.6 PPG
     - Absolute Median Error: 2.3 PPG
  - TEs:
+    - Attributes Kept: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share, Average Depth of Target, Yards Before Catch, Yards After Catch, Passer Rating of QB
+    - Attributes Removed: Yards Before Catch Per Reception, Yards After Catch Per Reception
     - Accuracy: 71%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 1.8 PPG
@@ -197,33 +256,37 @@ We decided on a Linear Regression model given the continuous data inputs and out
     - Absolute Median Error: 1.6 PPG
 
 ### Final Attempt:
+
+![final](Images/finalmodel.png)
+
  - QBs:
+    - Final Attributes: Passing Attempts, Passing Yards, Passing Touchdowns, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Fantasy Points Per Game, Starter designation, Next Year Starter designation, Age
     - Accuracy: 70%
     - Average Error: 0.2 PPG
     - Absolute Average Error: 2.9 PPG
     - Median Error: 0.4 PPG
     - Absolute Median Error: 2.5 PPG
  - RBs:
+    - Final Attributes: Age, Rushing Attempts, Rushing Yards, Rushing Yards Per Attempt, Rushing Yards Per Attempt, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share, Yards Before Contact, Yards Before Contact Per Attempt, Yards After Contact, Yards After Contact Per Attempt, Broken Tackles, Broken Tackles Per Attemp
     - Accuracy: 62%
     - Average Error: -0.1 PPG
     - Absolute Average Error: 2.8 PPG
     - Median Error: 0.2 PPG
     - Absolute Median Error: 2.1 PPG
  - WRs:
+    - Final Attributes: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share, Average Depth of Target, Yards Before Catch, Yards After Catch, Passer Rating of QB, Yards Before Catch Per Reception, Yards After Catch Per Reception
     - Accuracy: 64%
     - Average Error: 0.3 PPG
     - Absolute Average Error: 2.6 PPG
     - Median Error: 0.8 PPG
     - Absolute Median Error: 2.1 PPG
  - TEs:
+    - Final Attributes: Age, Targets, Receptions, Reception Yards, Yards Per Reception, Fantasy Points Per Game, Rushing Share, Target Share, Average Depth of Target, Yards Before Catch, Yards After Catch, Passer Rating of QB, Yards Before Catch Per Reception, Yards After Catch Per Reception
     - Accuracy: 71%
     - Average Error: 0.1 PPG
     - Absolute Average Error: 1.9 PPG
     - Median Error: 0.5 PPG
     - Absolute Median Error: 1.8 PPG
-
-### Data Decisions
-We needed 4 separate models for the 4 different football positions given difference in weight of certain statistics on certain positions. For example, passing and rushing stats were more heavily weighted for QBs and RBs, while targets and receptions were more heavily weight for WRs and TEs. With this in mind, we created a robust dataset that could then be sliced before being put into our models so we could gear each model to a specific position. 
 
 ### Dashboard Storyboard
 We will begin with an explanation of how fantasy points are scored and the differences by position. We fill continue with a visualization showing predicted 2020 points per game plotted against the actual 2020 points per game. We will continue with a visualization showing the median error in our predictions, and finish with a interactive visualization that allows a user to filter by position and team on the projections for the 2022 season. 
