@@ -294,6 +294,9 @@ We decided on a Linear Regression model given the continuous data inputs and out
 ### Dashboard Storyboard
 We will begin with an explanation of how fantasy points are scored and the differences by position. We fill continue with a visualization showing predicted 2020 points per game plotted against the actual 2020 points per game. We will continue with a visualization showing the median error in our predictions, and finish with a interactive visualization that allows a user to filter by position and team on the projections for the 2022 season. 
 
+Link to Tableau story: 
+https://public.tableau.com/app/profile/matt.barton1177/viz/Fantasy_Football_Data_Story/Story?publish=yes
+
 ## Future
 ### Future Analysis
 
