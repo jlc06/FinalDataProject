@@ -7,3 +7,4 @@ Fourth and final commit
 Initial tools for web scraping and cleaning will be python, pandas and jupyter notebook
 Machine learning tools will be scikit learn
 Database tools we use are SQL and PostgreSQL
+Additional database tools to be used are SQLAlchemy and AWS
