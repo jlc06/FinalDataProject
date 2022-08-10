@@ -10,3 +10,4 @@ Database tools we use are SQL and PostgreSQL
 Additional database tools to be used are SQLAlchemy and AWS
 Exploratory analysis tools will be R Studio
 Dashboard and visualizations will be presented using Tableau
+Presentation notes: We used a wide range of tools for each part of our process. For the web scraping, cleaning, and data manipulation we using Python and Pandas in Jupyter Notebooks.
