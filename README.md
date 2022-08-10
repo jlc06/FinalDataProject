@@ -9,3 +9,4 @@ Machine learning tools will be scikit learn
 Database tools we use are SQL and PostgreSQL
 Additional database tools to be used are SQLAlchemy and AWS
 Exploratory analysis tools will be R Studio
+Dashboard and visualizations will be presented using Tableau
