@@ -15,3 +15,4 @@ Presentation notes 2:  To create our database, we took the CSV files created usi
 Presentation notes 3: We used R Studio for some occasional exploratory analysis and to create our initial visualizations.
 Presentation notes 4: We used Scikit learn within our Jupyter Notebooks to create our machine learning model. 
 Presentation notes 5: And finally, we using Tableau to create our final dashboard and revamped our visualizations originally created in R Studio. 
+That's a wrap on the class and project
