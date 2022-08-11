@@ -21,4 +21,5 @@ Once we had a working model, we then added a few stats to the running back and r
 
 SLIDE 3
 We now were happy with the QB Model, and after some research The advanced stats we settled on adding to our WR and TE model were Average Depth of Target, (which is how far the receiver runs downfield before the ball is thrown to him), Yards before and after Catch per game, yards before and after catch per reception, and QB passer rating.  
+For the WR/TE model the Passer rate variable basically shows how well the QB throwing to the receiver or tight end played and helps show how the player is performing in relation to their QB. This is a good metric to determine if the receiver is playing well in spite of a bad qb, or the qb could be inflating the receiver’s numbers.  After these additions, The WR model increased from 57% to 64%. The TE Model jumped from 54% to 70%.
 
