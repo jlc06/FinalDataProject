@@ -23,3 +23,10 @@ SLIDE 3
 We now were happy with the QB Model, and after some research The advanced stats we settled on adding to our WR and TE model were Average Depth of Target, (which is how far the receiver runs downfield before the ball is thrown to him), Yards before and after Catch per game, yards before and after catch per reception, and QB passer rating.  
 For the WR/TE model the Passer rate variable basically shows how well the QB throwing to the receiver or tight end played and helps show how the player is performing in relation to their QB. This is a good metric to determine if the receiver is playing well in spite of a bad qb, or the qb could be inflating the receiver’s numbers.  After these additions, The WR model increased from 57% to 64%. The TE Model jumped from 54% to 70%.
 
+Additionally for running backs we added yards before and after contact per game and per attempt, and how many broken tackles the rbs had per game and per attempt.  After adding the advanced stats, our models really showed improvement.  
+
+
+SLIDE 4
+And just to conclude and show our final results, the QB model finished with 70% accuracy. The RB model as you can see is 62% accurate. The WR model as I mentioned was 64% accurate and the TE model is 71% accurate. 
+And now I’ll hand it off to Barry to discuss the tools we used. 
+![image](https://user-images.githubusercontent.com/100726716/184048835-0b7dd52b-e8dd-4882-b208-65a735111720.png)
