@@ -14,7 +14,6 @@ We came to the decision to use a linear regression model instead of using binary
 
 Originally for our variables, we used basic stats to create our model and test the accuracy. We tried simply passing yards per game, rush attempts and yards per game, receiving yards per game and a few other stats such as targets and attempts per game. This resulted in accuracy of roughly 45-57% among the 4 models. So clear room for improvement in our next attempt. 
  
-![image](https://user-images.githubusercontent.com/100726716/184048584-41409daf-5fe2-436a-9fbe-cc012ca6f2bf.png)
 SLIDE 2
  Looking specifically at QBs,  we started thinking about easy ways we could improve the model to account for players who were the starter in the current year and the starter the following year, instead of being either a backup or out of the league. So as John touched on, we then added the “Next Year Starter” and “Starter” features. This was our most successful variable overall I would say because of the huge jump in accuracy in the qb model.   Adding the “next year starter” variable alone changed the QB model accuracy to be 70% which was up from 45%.  
 Once we had a working model, we then added a few stats to the running back and receivers/TE models. We added stats such as target share and rush share as John mentioned earlier. This shows pretty clearly which players are getting the most touches and therefore the most opportunity to score fantasy points.  Even after those additions, We still weren’t quite satisfied with the overall accuracy of our skill position models which were just over 50%, so we then decided to add some advanced stats in order to hopefully help the accuracy. 
@@ -29,4 +28,4 @@ Additionally for running backs we added yards before and after contact per game 
 SLIDE 4
 And just to conclude and show our final results, the QB model finished with 70% accuracy. The RB model as you can see is 62% accurate. The WR model as I mentioned was 64% accurate and the TE model is 71% accurate. 
 And now I’ll hand it off to Barry to discuss the tools we used. 
-![image](https://user-images.githubusercontent.com/100726716/184048835-0b7dd52b-e8dd-4882-b208-65a735111720.png)
+
